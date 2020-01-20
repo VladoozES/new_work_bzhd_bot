@@ -63,7 +63,7 @@ def get_cell_text(cell_id: str, chat_id: str):
             for i in range(len(cell.links)):
                 if cell.links[i] in get_user_winscene(chat_id):
                     res = res + '\n {0})'.format(i + 1) + \
-                        cur.execute("SELECT text FROM cells_id WHERE cell_id='{0}'".format(cell.links[i])).fetchall()[0][0] + '(пройдена)'
+                        cur.execute("SELECT text FROM cells_id WHERE cell_id='{0}' ".format(cell.links[i])).fetchall()[0][0] + '🔰'
                 else:
                     res = res + '\n {0})'.format(i + 1) + \
                         cur.execute("SELECT text FROM cells_id WHERE cell_id='{0}'".format(cell.links[i])).fetchall()[0][0]
@@ -89,7 +89,6 @@ def get_custom_numeric_keyboard(cell_id: str):
             res_list.append([])
         res_list[i // 3].append(str(i + 1))
     return ReplyKeyboardMarkup(res_list, resize_keyboard=True, one_time_keyboard=True)
-
 
 
 def set_user_surname(chat_id: str, value: str):

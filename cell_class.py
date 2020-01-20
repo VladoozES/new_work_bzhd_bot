@@ -11,7 +11,6 @@ class Cell(object):
         self.type = cursor.execute("SELECT type FROM cells_id WHERE cell_id='{0}'".format(cell_id)).fetchall()[0][0]
         self.links = re.split(' ', cursor.execute(
             "SELECT links FROM cells_id WHERE cell_id='{0}'".format(cell_id)).fetchall()[0][0])  # links в БД:'1123 11234'
-        self.point = int(cursor.execute("SELECT point FROM cells_id WHERE cell_id='{0}'".format(cell_id)).fetchall()[0][0])
         cursor.close()
         con.commit()
         con.close()
